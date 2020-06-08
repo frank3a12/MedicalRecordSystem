@@ -51,7 +51,7 @@ END_MESSAGE_MAP()
 
 
 CMedicalRecordSystemDlg::CMedicalRecordSystemDlg(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_MEDICALRECORDSYSTEM_DIALOG, pParent)
+	: CDialogEx(IDD_STOCKRECOMMANDSYSTEM_DIALOG, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
