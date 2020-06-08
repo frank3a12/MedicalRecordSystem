@@ -1,0 +1,2 @@
+- Release模式：將 "20家公司.csv" 複製到MedicalRecordSystem.exe旁邊 (同資料夾下)
+- Debug  模式：將 "20家公司.csv" 複製到MedicalRecordSystem資料夾內
