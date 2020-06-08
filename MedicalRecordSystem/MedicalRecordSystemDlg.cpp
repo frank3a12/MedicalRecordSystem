@@ -7,11 +7,18 @@
 #include "MedicalRecordSystem.h"
 #include "MedicalRecordSystemDlg.h"
 #include "afxdialogex.h"
-
+//-----------------------------------------------------------------------------
+#include "RetriveIndividualStockDlg.h"
+//-----------------------------------------------------------------------------
+#include <fstream>
+#include <sstream>
+#include <string> 
+//-----------------------------------------------------------------------------
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
+using namespace std;
 
 // 對 App About 使用 CAboutDlg 對話方塊
 
@@ -65,6 +72,7 @@ BEGIN_MESSAGE_MAP(CMedicalRecordSystemDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_RetriveIndividualStock, &CMedicalRecordSystemDlg::OnBnClickedRetriveindividualstock)
 END_MESSAGE_MAP()
 
 
@@ -100,6 +108,33 @@ BOOL CMedicalRecordSystemDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 設定小圖示
 
 	// TODO: 在此加入額外的初始設定
+	//----------------------------------------------------------------------------
+	// Load CSV
+	fstream file;
+	file.open("20家公司.csv");
+
+	string line;
+	getline(file, line);	//先把標頭讀起來
+	while (getline(file, line))
+	{
+		string currLine = line;
+		istringstream currLineStream(currLine);
+
+		vector<double> csvCell;
+		string tmpStr;
+		while (getline(currLineStream, tmpStr, ','))
+			csvCell.push_back(atof(tmpStr.c_str()));
+
+		StockDataStruct newData;
+		newData.stockIndex = (int)csvCell[0];
+		newData.stockPrice = csvCell[1];
+		newData.cashDividend = csvCell[2];
+		newData.cashDividendYield = csvCell[3];
+		newData.EPS = csvCell[4];
+		newData.ROE = csvCell[5];
+		mStockDB.push_back(newData);
+	}
+	file.close();
 
 	return TRUE;  // 傳回 TRUE，除非您對控制項設定焦點
 }
@@ -153,3 +188,12 @@ HCURSOR CMedicalRecordSystemDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+void CMedicalRecordSystemDlg::OnBnClickedRetriveindividualstock()
+{
+	// TODO: 在此加入控制項告知處理常式程式碼
+	//----------------------------------------------------------------------------
+	//顯示RetriveIndividualStockDlg
+	RetriveIndividualStockDlg dlg;
+	if (dlg.DoModal() == NULL) return;
+
+}
