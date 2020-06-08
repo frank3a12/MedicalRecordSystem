@@ -188,15 +188,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="MedicalRecordDataStruct.h" />
     <ClInclude Include="MedicalRecordSystem.h" />
     <ClInclude Include="MedicalRecordSystemDlg.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="StockDataStruct.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MedicalRecordDataStruct.cpp" />
     <ClCompile Include="MedicalRecordSystem.cpp" />
     <ClCompile Include="MedicalRecordSystemDlg.cpp" />
     <ClCompile Include="pch.cpp">
@@ -205,6 +204,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="StockDataStruct.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MedicalRecordSystem.rc" />
