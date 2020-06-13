@@ -9,6 +9,7 @@
 #include "afxdialogex.h"
 //-----------------------------------------------------------------------------
 #include "RetriveIndividualStockDlg.h"
+#include "SortStockByConditionDlg.h"
 //-----------------------------------------------------------------------------
 #include <fstream>
 #include <sstream>
@@ -73,6 +74,7 @@ BEGIN_MESSAGE_MAP(CMedicalRecordSystemDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_RetriveIndividualStock, &CMedicalRecordSystemDlg::OnBnClickedRetriveindividualstock)
+	ON_BN_CLICKED(IDC_SortStock, &CMedicalRecordSystemDlg::OnBnClickedSortstock)
 END_MESSAGE_MAP()
 
 
@@ -194,6 +196,15 @@ void CMedicalRecordSystemDlg::OnBnClickedRetriveindividualstock()
 	//----------------------------------------------------------------------------
 	//顯示RetriveIndividualStockDlg
 	RetriveIndividualStockDlg dlg;
+	dlg.SetStockDB(mStockDB);
 	if (dlg.DoModal() == NULL) return;
+}
 
+
+void CMedicalRecordSystemDlg::OnBnClickedSortstock()
+{
+	// TODO: 在此加入控制項告知處理常式程式碼
+	SortStockByConditionDlg dlg;
+	dlg.SetStockDB(mStockDB);
+	if (dlg.DoModal() == NULL) return;
 }
