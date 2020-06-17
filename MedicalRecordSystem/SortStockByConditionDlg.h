@@ -23,6 +23,7 @@ public:
 
 private:
 	StockDataStructVecT mStockDB;
+	int mSortType;
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支援
