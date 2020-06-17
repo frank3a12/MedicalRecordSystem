@@ -39,4 +39,5 @@ public:
 public:
 	StockDataStructVecT mStockDB;
 	afx_msg void OnBnClickedSortstock();
+	afx_msg void OnBnClickedSearchstock();
 };

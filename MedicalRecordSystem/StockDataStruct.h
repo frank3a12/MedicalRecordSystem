@@ -18,3 +18,13 @@ public:
 };
 typedef std::vector<StockDataStruct> StockDataStructVecT;
 
+class CompareType 
+{
+public:
+	static bool CompareByStockIndex(StockDataStruct &data1, StockDataStruct &data2);
+	static bool CompareByStockPrice(StockDataStruct &data1, StockDataStruct &data2);
+	static bool CompareByCashDividend(StockDataStruct &data1, StockDataStruct &data2);
+	static bool CompareByCashDividendYield(StockDataStruct &data1, StockDataStruct &data2);
+	static bool CompareByEPS(StockDataStruct &data1, StockDataStruct &data2);
+	static bool CompareByROE(StockDataStruct &data1, StockDataStruct &data2);
+};

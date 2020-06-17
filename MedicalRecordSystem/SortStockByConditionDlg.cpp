@@ -39,35 +39,6 @@ END_MESSAGE_MAP()
 
 // SortStockByConditionDlg 訊息處理常式
 //-----------------------------------------------------------------------------
-bool CompareByStockIndex(StockDataStruct &data1, StockDataStruct &data2)
-{
-	return (data1.stockIndex < data2.stockIndex);
-}
-
-bool CompareByStockPrice(StockDataStruct &data1, StockDataStruct &data2)
-{
-	return (data1.stockPrice < data2.stockPrice);
-}
-
-bool CompareByCashDividend(StockDataStruct &data1, StockDataStruct &data2)
-{
-	return (data1.cashDividend < data2.cashDividend);
-}
-
-bool CompareByCashDividendYield(StockDataStruct &data1, StockDataStruct &data2)
-{
-	return (data1.cashDividendYield < data2.cashDividendYield);
-}
-
-bool CompareByEPS(StockDataStruct &data1, StockDataStruct &data2)
-{
-	return (data1.EPS < data2.EPS);
-}
-
-bool CompareByROE(StockDataStruct &data1, StockDataStruct &data2)
-{
-	return (data1.ROE < data2.ROE);
-}
 
 void SortStockByConditionDlg::OnBnClickedButtonSortstockexecute()
 {
@@ -79,27 +50,27 @@ void SortStockByConditionDlg::OnBnClickedButtonSortstockexecute()
 	// 開始排序
 	CString title = L"";
 	if (mSortType == 0) {
-		std::sort(mStockDB.begin(), mStockDB.end(), CompareByStockIndex);
+		std::sort(mStockDB.begin(), mStockDB.end(), CompareType::CompareByStockIndex);
 		title = L"股票代號";
 	}
 	else if (mSortType == 1) {
-		std::sort(mStockDB.begin(), mStockDB.end(), CompareByStockPrice);
+		std::sort(mStockDB.begin(), mStockDB.end(), CompareType::CompareByStockPrice);
 		title = L"股價";
 	}
 	else if (mSortType == 2) {
-		std::sort(mStockDB.begin(), mStockDB.end(), CompareByCashDividend);
+		std::sort(mStockDB.begin(), mStockDB.end(), CompareType::CompareByCashDividend);
 		title = L"現金股利";
 	}
 	else if (mSortType == 3) {
-		std::sort(mStockDB.begin(), mStockDB.end(), CompareByCashDividendYield);
+		std::sort(mStockDB.begin(), mStockDB.end(), CompareType::CompareByCashDividendYield);
 		title = L"現金股利殖利率";
 	}
 	else if (mSortType == 4) {
-		std::sort(mStockDB.begin(), mStockDB.end(), CompareByEPS);
+		std::sort(mStockDB.begin(), mStockDB.end(), CompareType::CompareByEPS);
 		title = L"EPS";
 	}
 	else if (mSortType == 5) {
-		std::sort(mStockDB.begin(), mStockDB.end(), CompareByROE);
+		std::sort(mStockDB.begin(), mStockDB.end(), CompareType::CompareByROE);
 		title = L"ROE";
 	}
 
@@ -110,27 +81,26 @@ void SortStockByConditionDlg::OnBnClickedButtonSortstockexecute()
 		
 		std::wstring tmpStr;
 		tmpStr = std::to_wstring(currData.stockIndex);
-		tmpStr.erase(tmpStr.find_last_not_of('0') + 1, std::string::npos);
 		result += (L"代號: " + CString(tmpStr.c_str()) + L", ");
 
 		tmpStr = std::to_wstring(currData.stockPrice);
-		tmpStr.erase(tmpStr.find_last_not_of('0') + 1, std::string::npos);
+		tmpStr.erase(tmpStr.find_first_of('.') + 3, std::string::npos);
 		result += (L"股價: " + CString(tmpStr.c_str()) + L", ");
 
 		tmpStr = std::to_wstring(currData.cashDividend);
-		tmpStr.erase(tmpStr.find_last_not_of('0') + 1, std::string::npos);
+		tmpStr.erase(tmpStr.find_first_of('.') + 3, std::string::npos);
 		result += (L"股利: " + CString(tmpStr.c_str()) + L", ");
 
 		tmpStr = std::to_wstring(currData.cashDividendYield);
-		tmpStr.erase(tmpStr.find_last_not_of('0') + 1, std::string::npos);
+		tmpStr.erase(tmpStr.find_first_of('.') + 3, std::string::npos);
 		result += (L"殖利率: " + CString(tmpStr.c_str()) + L", ");
 
 		tmpStr = std::to_wstring(currData.EPS);
-		tmpStr.erase(tmpStr.find_last_not_of('0') + 1, std::string::npos);
+		tmpStr.erase(tmpStr.find_first_of('.') + 3, std::string::npos);
 		result += (L"EPS: " + CString(tmpStr.c_str()) + L", ");
 		
 		tmpStr = std::to_wstring(currData.ROE);
-		tmpStr.erase(tmpStr.find_last_not_of('0') + 1, std::string::npos);
+		tmpStr.erase(tmpStr.find_first_of('.') + 3, std::string::npos);
 		result += (L"ROE: " + CString(tmpStr.c_str()) + L"\n");
 	}
 

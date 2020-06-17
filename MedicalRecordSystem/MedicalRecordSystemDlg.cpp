@@ -1,4 +1,5 @@
-﻿
+﻿#include "MedicalRecordSystemDlg.h"
+
 // MedicalRecordSystemDlg.cpp: 實作檔案
 //
 
@@ -10,6 +11,7 @@
 //-----------------------------------------------------------------------------
 #include "RetriveIndividualStockDlg.h"
 #include "SortStockByConditionDlg.h"
+#include "SelectStockByConditionDlg.h"
 //-----------------------------------------------------------------------------
 #include <fstream>
 #include <sstream>
@@ -75,6 +77,7 @@ BEGIN_MESSAGE_MAP(CMedicalRecordSystemDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_RetriveIndividualStock, &CMedicalRecordSystemDlg::OnBnClickedRetriveindividualstock)
 	ON_BN_CLICKED(IDC_SortStock, &CMedicalRecordSystemDlg::OnBnClickedSortstock)
+	ON_BN_CLICKED(IDC_SearchStock, &CMedicalRecordSystemDlg::OnBnClickedSearchstock)
 END_MESSAGE_MAP()
 
 
@@ -205,6 +208,14 @@ void CMedicalRecordSystemDlg::OnBnClickedSortstock()
 {
 	// TODO: 在此加入控制項告知處理常式程式碼
 	SortStockByConditionDlg dlg;
+	dlg.SetStockDB(mStockDB);
+	if (dlg.DoModal() == NULL) return;
+}
+
+void CMedicalRecordSystemDlg::OnBnClickedSearchstock()
+{
+	// TODO: 在此加入控制項告知處理常式程式碼
+	SelectStockByConditionDlg dlg;
 	dlg.SetStockDB(mStockDB);
 	if (dlg.DoModal() == NULL) return;
 }
