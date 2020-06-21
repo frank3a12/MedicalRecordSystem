@@ -15,6 +15,7 @@ public:
 	double cashDividendYield; //現金股利殖利率
 	double EPS;	//EPS
 	double ROE;	//ROE
+	double tenDaysPrices[10];	//近10日股價
 };
 typedef std::vector<StockDataStruct> StockDataStructVecT;
 
