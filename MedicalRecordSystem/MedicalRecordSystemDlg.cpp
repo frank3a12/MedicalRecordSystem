@@ -137,9 +137,8 @@ BOOL CMedicalRecordSystemDlg::OnInitDialog()
 		newData.cashDividendYield = csvCell[3];
 		newData.EPS = csvCell[4];
 		newData.ROE = csvCell[5];
-		for (int i = 6; i < 15; i++) {
-			double prevDatePrices = csvCell[i];
-			newData.tenDaysPrices[i - 6] = prevDatePrices;
+		for (int i = 6, j = 0; i < 15; i++, j++) {
+			newData.tenDaysPrices[j] = csvCell[i];
 		}
 		mStockDB.push_back(newData);
 	}
