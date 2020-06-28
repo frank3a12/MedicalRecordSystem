@@ -29,3 +29,9 @@ public:
 	static bool CompareByEPS(StockDataStruct &data1, StockDataStruct &data2);
 	static bool CompareByROE(StockDataStruct &data1, StockDataStruct &data2);
 };
+
+class SearchType 
+{
+public:
+	static int BinarySearch(StockDataStructVecT dataVec, int length, int stockIndex);
+};

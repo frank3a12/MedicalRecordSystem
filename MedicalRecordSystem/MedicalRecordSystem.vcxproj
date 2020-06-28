@@ -198,6 +198,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RetriveIndividualStockDlg.h" />
     <ClInclude Include="SelectStockByConditionDlg.h" />
+    <ClInclude Include="SimpleInputDlg.h" />
     <ClInclude Include="SortStockByConditionDlg.h" />
     <ClInclude Include="StockDataStruct.h" />
     <ClInclude Include="targetver.h" />
@@ -213,6 +214,7 @@
     </ClCompile>
     <ClCompile Include="RetriveIndividualStockDlg.cpp" />
     <ClCompile Include="SelectStockByConditionDlg.cpp" />
+    <ClCompile Include="SimpleInputDlg.cpp" />
     <ClCompile Include="SortStockByConditionDlg.cpp" />
     <ClCompile Include="StockDataStruct.cpp" />
   </ItemGroup>

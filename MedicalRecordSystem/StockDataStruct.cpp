@@ -30,3 +30,21 @@ bool CompareType::CompareByROE(StockDataStruct &data1, StockDataStruct &data2)
 {
 	return (data1.ROE < data2.ROE);
 }
+
+int SearchType::BinarySearch(StockDataStructVecT dataVec, int length, int stockIndex)
+{
+	int left = 0, right = length - 1;
+	while (left <= right)
+	{
+		int middle = (right + left) / 2;
+
+		if (dataVec[middle].stockIndex == stockIndex)
+			return middle;
+
+		if (dataVec[middle].stockIndex > stockIndex)
+			right = middle - 1;
+		else
+			left = middle + 1;
+	}
+	return -1;
+}
