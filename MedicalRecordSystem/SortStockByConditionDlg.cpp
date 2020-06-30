@@ -92,7 +92,7 @@ void SortStockByConditionDlg::OnBnClickedButtonSortstockexecute()
 		result += (L"股利: " + CString(tmpStr.c_str()) + L", ");
 
 		tmpStr = std::to_wstring(currData.cashDividendYield);
-		tmpStr.erase(tmpStr.find_first_of('.') + 3, std::string::npos);
+		tmpStr.erase(tmpStr.find_first_of('.') + 4, std::string::npos);
 		result += (L"殖利率: " + CString(tmpStr.c_str()) + L", ");
 
 		tmpStr = std::to_wstring(currData.EPS);
